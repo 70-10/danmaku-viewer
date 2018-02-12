@@ -1,0 +1,9 @@
+version: "3.3"
+services:
+  app:
+    build: .
+    image: danmaku-viewer
+    volumes:
+      - .:/workspace
+    ports:
+      - 3000:3000
