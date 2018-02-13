@@ -1,6 +1,7 @@
 const express = require("express");
 const http = require("http");
 const socketio = require("socket.io");
+const bodyParser = require("body-parser");
 
 const app = express();
 const server = http.Server(app);
@@ -15,9 +16,20 @@ const count = {
   comment: 0,
 };
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.set("view engine", "pug");
 app.use("/static", express.static("public"));
 app.get("/", (req, res) => res.render("index"));
+
+app.post("/title", (req, res) => {
+  const { title } = req.body;
+  if (!title) {
+    return res.status(400).end();
+  }
+  io.emit("title", title);
+  res.send({ status: "OK" });
+});
 
 io.on("connection", socket => {
   debug(`connected: ${socket.id}`);
@@ -31,7 +43,7 @@ io.on("connection", socket => {
     count.viewer--;
     io.emit("count", count);
   });
-  socket.on("chat message", async msg => {
+  socket.on("chat message", msg => {
     debug(msg);
     io.emit("chat message", msg);
     count.comment++;

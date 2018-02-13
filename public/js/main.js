@@ -48,4 +48,8 @@ $(() => {
   $("button.emoji").on("click", function() {
     socket.emit("chat message", { message: $(this).text() });
   });
+
+  socket.on("title", title => {
+    $("h2#title").text(title);
+  });
 });
