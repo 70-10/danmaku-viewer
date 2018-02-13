@@ -20,8 +20,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.set("view engine", "pug");
 app.use("/static", express.static("public"));
-app.get("/", (req, res) => res.render("index"));
 
+app.get("/", (req, res) => res.render("index", { emoji_list: ["👍", "😂😂😂", "👏👏👏"] }));
 app.post("/title", (req, res) => {
   const { title } = req.body;
   if (!title) {
@@ -30,14 +30,11 @@ app.post("/title", (req, res) => {
   io.emit("title", title);
   res.send({ status: "OK" });
 });
-
 io.on("connection", socket => {
   debug(`connected: ${socket.id}`);
-
   count.viewer++;
   count.all++;
   io.emit("count", count);
-
   socket.on("disconnect", () => {
     debug(`disconnected: ${socket.id}`);
     count.viewer--;
@@ -50,7 +47,6 @@ io.on("connection", socket => {
     io.emit("count", count);
   });
 });
-
 server.listen(port, () => {
   debug(`Server start: ${port}`);
 });

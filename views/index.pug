@@ -68,6 +68,5 @@ html(lang="ja")
           .columns
             .column
               .buttons
-                button.button.is-rounded.is-medium.emoji 👍
-                button.button.is-rounded.is-medium.emoji 😂😂😂
-                button.button.is-rounded.is-medium.emoji 👏👏👏
+                each emoji in emoji_list
+                  button.button.is-rounded.is-medium.emoji= emoji
