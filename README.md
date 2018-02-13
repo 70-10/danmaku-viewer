@@ -3,5 +3,5 @@
 ## Usage
 
 ```
-$ npm start
+$ DEBUG=danmaku-viewer* npm start
 ```
