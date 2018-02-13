@@ -7,6 +7,7 @@
     "node": ">=8"
   },
   "scripts": {
+    "dev": "DEBUG=danmaku-viewer* nodemon -w server.js server.js",
     "lint": "prettier-eslint --write \"./@(public)/**/*.js\"",
     "start": "node server.js"
   },
@@ -24,6 +25,7 @@
   "devDependencies": {
     "eslint": "^4.17.0",
     "eslint-plugin-node": "^6.0.0",
+    "nodemon": "^1.14.12",
     "prettier": "^1.10.2",
     "prettier-eslint": "^8.8.1",
     "prettier-eslint-cli": "^4.7.0"
