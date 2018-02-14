@@ -10,6 +10,8 @@ const io = socketio(server);
 const debug = require("debug")("danmaku-viewer:server");
 
 const port = process.env.PORT || 3000;
+let title = "";
+let url = "/waiting";
 const count = {
   viewer: 0,
   all: 0,
@@ -21,13 +23,22 @@ app.use(bodyParser.json());
 app.set("view engine", "pug");
 app.use("/static", express.static("public"));
 
-app.get("/", (req, res) => res.render("index", { emoji_list: ["👍", "😂😂😂", "👏👏👏"] }));
+app.get("/", (req, res) => res.render("index", { title, url, emoji_list: ["👍", "😂😂😂", "👏👏👏"] }));
+app.get("/waiting", (req, res) => res.render("waiting"));
 app.post("/title", (req, res) => {
-  const { title } = req.body;
+  title = req.body.title;
   if (!title) {
     return res.status(400).end();
   }
   io.emit("title", title);
+  res.send({ status: "OK" });
+});
+app.post("/src", (req, res) => {
+  url = req.body.url;
+  if (!url) {
+    return res.status(400).end();
+  }
+  io.emit("source", url);
   res.send({ status: "OK" });
 });
 io.on("connection", socket => {

@@ -52,4 +52,8 @@ $(() => {
   socket.on("title", title => {
     $("h2#title").text(title);
   });
+
+  socket.on("source", url => {
+    $("iframe#video").attr("src", url);
+  });
 });
