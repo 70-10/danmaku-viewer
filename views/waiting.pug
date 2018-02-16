@@ -6,10 +6,16 @@ html(lang="ja")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible" content="ie=edge")
     title Waiting
-    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css")
+    style(type='text/css').
+      .image {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        max-width: 80%;
+        max-height: 80%;
+      }
   body
-    section.hero.is-fullheight.is-dark.is-bold
-      .hero-body
-        .container.has-text-centered
-          figure.image.is-2by1
-            image(src="/static/img/logo.png")
+    image.image(src="/static/img/logo.png")

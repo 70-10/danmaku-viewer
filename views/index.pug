@@ -16,57 +16,57 @@ html(lang="ja")
     section.hero
       .hero-body
         .container
-          nav.level
-            .level-left
-              .level-item.has-text-centered
-                div
-                  p.heading 視聴者数
-                  p.title#count
-              .level-item.has-text-centered
-                div
-                  p.heading 総視聴者数
-                  p.title#all-count
-              .level-item.has-text-centered
-                div
-                  p.heading コメント数
-                  p.title#comment-count
-
-            .level-right
-              p.level-item.has-text-centered
-                a(href="http://example.com" target="_blank")
-                  span.icon.is-small.is-left
-                    i.fa.fa-external-link-alt
-                  span イベント詳細
-
-
           .columns
-            .column.is-10(style="background-color: #999;")
-              #danmaku(style="width:83%;height:560px;position:absolute;margin-top:40px;")
-              .has-text-centered(style="width:83%;height:40px;position:absolute;background-color:#333;")
+            .column
+              #danmaku(style="width:100%;height:560px;position:absolute;margin-top:40px;")
+              .has-text-centered(style="width:100%;height:40px;position:absolute;background-color:#333;")
                 h2.subtitle#title(style="padding-top:0.5rem;color:#fff;")= title
-              iframe#video(src=url frameborder="0" style="width:100%;height:600px;")
-            .column(style="background-color: #999;")
-              ul#timeline(style="overflow-y:scroll;height:600px;background-color:#eee;")
-
-
+              iframe#video.is-fullheight(src=url frameborder="0" style="width:100%;height:calc((9/16)*65vw);background-color:#333" )
           .columns
             .column
-              form
-                .field.has-addons
-                  .field.has-addons
-                    p.control.has-icons-left
+              nav.level
+                .level-left
+                  .level-item.has-text-centered
+                    div
+                      p.heading 視聴者数
+                      p.title#count
+                  .level-item.has-text-centered
+                    div
+                      p.heading 総視聴者数
+                      p.title#all-count
+                  .level-item.has-text-centered
+                    div
+                      p.heading コメント数
+                      p.title#comment-count
+
+                .level-right
+                  p.level-item.has-text-centered
+                    a(href="http://example.com" target="_blank")
                       span.icon.is-small.is-left
-                        i.fa.fa-user
-                      input#name.input(type="text" placeholder="Name")
-
-                  .control.is-expanded
-                    input#m.input(type="text" autocomplete="off" placeholder="comment")
-
-                  .control
-                    button.button.is-info Send
-
+                        i.fa.fa-external-link-alt
+                      span イベント詳細
           .columns
+            .column.is-8
+              .columns
+                .column
+                  form
+                    .field.has-addons
+                      p.control.has-icons-left
+                        span.icon.is-small.is-left
+                          i.fa.fa-user
+                        input#name.input(type="text" placeholder="Name")
+                    .field.has-addons
+                      .control.is-expanded
+                        input#m.input(type="text" autocomplete="off" placeholder="comment")
+
+                      .control
+                        button.button.is-info Send
+
+              .columns
+                .column
+                  .buttons
+                    each emoji in emoji_list
+                      button.button.is-rounded.is-medium.emoji= emoji
             .column
-              .buttons
-                each emoji in emoji_list
-                  button.button.is-rounded.is-medium.emoji= emoji
+              h2.subtitle コメント
+              ul#timeline(style="overflow-y:scroll;height:300px;background-color:#eee;")
