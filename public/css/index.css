@@ -1,0 +1,32 @@
+#danmaku {
+  width: 100%;
+  height: 560px;
+  position: absolute;
+  margin-top: 40px;
+}
+#admin-area {
+  width: 100%;
+  height: 40px;
+  position: absolute;
+  background-color: #333;
+}
+#admin-area > #title {
+  padding-top: 0.5rem;
+  color: #fff;
+}
+#video {
+  width: 100%;
+  height: calc((9/16)*65vw);
+  background-color: #333;
+}
+ul#timeline {
+  overflow-y: scroll;
+  width: 380px;
+  height: 300px;
+  background-color: #eee;
+  border: solid 1.5px #eee;
+}
+ul#timeline > li {
+  background-color: #fff;
+  border-bottom: solid 1px #eee;
+}
