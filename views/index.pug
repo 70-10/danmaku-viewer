@@ -25,31 +25,32 @@ html(lang="ja")
               #admin-area.has-text-centered
                 h2.subtitle#title= title
               iframe#video.is-fullheight(src=url frameborder="0")
-          .columns
-            .column
-              nav.level
-                .level-left
-                  .level-item.has-text-centered
-                    div
-                      p.heading 視聴者数
-                      p.title#count
-                  .level-item.has-text-centered
-                    div
-                      p.heading 総視聴者数
-                      p.title#all-count
-                  .level-item.has-text-centered
-                    div
-                      p.heading コメント数
-                      p.title#comment-count
 
-                .level-right
-                  p.level-item.has-text-centered
-                    a(href="http://example.com" target="_blank")
-                      span.icon.is-small.is-left
-                        i.fa.fa-external-link-alt
-                      span イベント詳細
           .columns
             .column.is-8
+              .columns
+                .column
+                  nav.level
+                    .level-left
+                      .level-item.has-text-centered
+                        div
+                          p.heading 視聴者数
+                          p.title#count
+                      .level-item.has-text-centered
+                        div
+                          p.heading 総視聴者数
+                          p.title#all-count
+                      .level-item.has-text-centered
+                        div
+                          p.heading コメント数
+                          p.title#comment-count
+
+                    .level-right
+                      p.level-item.has-text-centered
+                        a(href="https://mti365.sharepoint.com/sites/2017/SitePages/Hacker%27s%20Hour%202018-02.aspx" target="_blank")
+                          span.icon.is-small.is-left
+                            i.fa.fa-external-link-alt
+                          span イベント詳細
               .columns
                 .column
                   form
@@ -71,5 +72,5 @@ html(lang="ja")
                     each emoji in emoji_list
                       button.button.is-rounded.is-medium.emoji= emoji
             .column
-              h2.subtitle コメント
+              span コメント
               ul#timeline
