@@ -2,6 +2,7 @@ const express = require("express");
 const http = require("http");
 const socketio = require("socket.io");
 const bodyParser = require("body-parser");
+const slack = require("./lib/slack");
 
 const app = express();
 const server = http.Server(app);
@@ -62,4 +63,6 @@ io.on("connection", socket => {
 });
 server.listen(port, () => {
   debug(`Server start: ${port}`);
+  const rtm = slack(io, count);
+  rtm.start();
 });
