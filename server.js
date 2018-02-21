@@ -23,7 +23,9 @@ app.use(bodyParser.json());
 app.set("view engine", "pug");
 app.use("/static", express.static("public"));
 
-app.get("/", (req, res) => res.render("index", { title, url, emoji_list: ["👍", "😂😂😂", "👏👏👏"] }));
+app.get("/", (req, res) =>
+  res.render("index", { title, url, emoji_list: ["👍", "😂😂😂", "👏👏👏", "☕️", "😱", "🙇", "🙏"] })
+);
 app.get("/waiting", (req, res) => res.render("waiting"));
 app.post("/title", (req, res) => {
   title = req.body.title;
