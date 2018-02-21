@@ -24,6 +24,7 @@ ul#timeline {
   width: 380px;
   height: 300px;
   border: solid 3px #ddd;
+  white-space: nowrap;
 }
 ul#timeline > li {
   border-bottom: solid 1px #eee;
