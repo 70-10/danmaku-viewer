@@ -20,13 +20,11 @@
   background-color: #333;
 }
 ul#timeline {
-  overflow-y: scroll;
+  overflow: scroll;
   width: 380px;
   height: 300px;
-  background-color: #eee;
   border: solid 3px #ddd;
 }
 ul#timeline > li {
-  background-color: #fff;
   border-bottom: solid 1px #eee;
 }
