@@ -3,6 +3,7 @@ const http = require("http");
 const socketio = require("socket.io");
 const bodyParser = require("body-parser");
 const slack = require("./lib/slack");
+const config = require("config");
 
 const app = express();
 const server = http.Server(app);
@@ -18,6 +19,8 @@ const count = {
   all: 0,
   comment: 0,
 };
+
+const rtm = slack(io, count);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -54,15 +57,15 @@ io.on("connection", socket => {
     count.viewer--;
     io.emit("count", count);
   });
-  socket.on("chat message", msg => {
+  socket.on("chat message", async msg => {
     debug(msg);
     io.emit("chat message", msg);
+    await rtm.sendMessage(msg.message, config.slack.channel_id);
     count.comment++;
     io.emit("count", count);
   });
 });
 server.listen(port, () => {
   debug(`Server start: ${port}`);
-  const rtm = slack(io, count);
   rtm.start();
 });
