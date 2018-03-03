@@ -7,9 +7,9 @@
     "node": ">=8"
   },
   "scripts": {
-    "dev": "DEBUG=danmaku-viewer* nodemon -w server.js server.js",
-    "lint": "prettier-eslint --write \"./@(public)/**/*.js\"",
-    "start": "node server.js"
+    "dev": "DEBUG=danmaku-viewer* nodemon -w ./lib/**/*.js ./lib/server.js",
+    "lint": "prettier-eslint --write \"./@(lib|config)/**/*.js\"",
+    "start": "node ./lib/server.js"
   },
   "repository": "70-10/danmaku-viewer",
   "keywords": [],
