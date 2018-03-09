@@ -46,7 +46,7 @@ $(() => {
   });
 
   $("button.emoji").on("click", function() {
-    socket.emit("chat message", { message: $(this).text() });
+    socket.emit("chat message", { message: $(this).text(), type: "emoji" });
   });
 
   socket.on("title", title => {
