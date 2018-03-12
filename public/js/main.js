@@ -6,12 +6,6 @@ $(() => {
   });
   const socket = io();
   $("form").submit(() => {
-    const name = $("input#name").val();
-
-    if (name && name !== localStorage.name) {
-      localStorage.name = name;
-    }
-
     const message = $("#m")
       .val()
       .trim();
@@ -20,7 +14,7 @@ $(() => {
       return false;
     }
 
-    socket.emit("chat message", { message, name });
+    socket.emit("chat message", { message });
 
     $("#m").val("");
     return false;
